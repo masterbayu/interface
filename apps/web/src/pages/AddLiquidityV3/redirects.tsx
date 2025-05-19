@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { useEnabledChains } from 'uniswap/src/features/chains/hooks/useEnabledChains'
 import { getChainUrlParam } from 'utils/chainParams'
 
-export default function AddLiquidityV3WithTokenRedirects() {
+export default function AddLiquidityV2WithTokenRedirects() {
   const { currencyIdA, currencyIdB, tokenId } = useParams<{
     currencyIdA: string
     currencyIdB: string
@@ -18,7 +18,7 @@ export default function AddLiquidityV3WithTokenRedirects() {
     return <Navigate to={`/positions/v3/${chainUrlParam}/${tokenId}`} replace />
   }
 
-  const url = new URL('/positions/create/v3', window.location.origin)
+  const url = new URL('/positions/create/v2', window.location.origin)
   if (currencyIdA) {
     url.searchParams.append('currencyA', currencyIdA)
   }
